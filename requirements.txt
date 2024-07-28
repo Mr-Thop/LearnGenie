@@ -5,7 +5,6 @@ langchain
 PyPDF2
 faiss-cpu
 langchain_google_genai
-pkg-config
 passlib==1.7.4
 mysql.connector
 mysqlclient
