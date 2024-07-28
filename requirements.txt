@@ -7,3 +7,5 @@ faiss-cpu
 langchain_google_genai
 passlib.hash
 mysql.connector
+mysqlclient
+requests
