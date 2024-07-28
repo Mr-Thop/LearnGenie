@@ -6,7 +6,7 @@ st.sidebar.write("Created with  ❤  by Team R^4")
 # --- Page Setup ---
 
 home_page = st.Page(
-    page="Pages\Home.py",
+    page="./Pages/Home.py",
     title="🏡 Home",
     default= True
 )
