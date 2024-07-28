@@ -46,4 +46,24 @@ with col4:
     st.image('images/ratan2.jfif',width=150)
     st.text("Ratan Maurya\nAIML Engineer")
 
+
+_,col1,_,col2,_,col3,_ = st.columns([0.3,1,0.6,1,0.6,1,0.3])
+
+with col1:
+    st.text("")
+    st.text("")
+    st.image('images/aadi.jfif',width=150)
+    st.text("Aaditya Ramrame\nAIML Engineer")
+
+with col2:
+    st.text("")
+    st.text("")
+    st.image('images/rishi.jfif',width=150)
+    st.text("Rishi Selam\nAIML Engineer")
+
+with col3:
+    st.text("")
+    st.text("")
+    st.image('images/arjun.jfif',width=150)
+    st.text("Mallikarjun Reddy\nAIML Engineer")
 st.write("---")
