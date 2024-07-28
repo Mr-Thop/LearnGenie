@@ -1,10 +1,8 @@
 import streamlit as st
 
-st.set_page_config(page_title="About Us | Team R^4",layout="wide")
 
 st.title("About Us")
 
-st.sidebar.write("Created with  ❤  by Team R^4")
 
 
 st.write("In our first year of studies, we embarked on a remarkable journey to create this project, a journey that served as a testament to our collective ideas and boundless creativity. This endeavor, though undoubtedly challenging, proved to be an immensely rewarding experience that has left an indelible mark on each of us.")

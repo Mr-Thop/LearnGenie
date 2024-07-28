@@ -7,8 +7,6 @@ import google.generativeai as genai
 load_dotenv()
 
 # Streamlit page configuration
-st.set_page_config(page_title="Genie Bot", layout="wide")
-st.sidebar.write("Created with  ❤  by Team R^4")
 
 # Configure Google Generative AI API
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))

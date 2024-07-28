@@ -1,7 +1,5 @@
 import streamlit as st
 
-st.set_page_config(layout='wide',page_title="Student Analysis")
-st.sidebar.write("Created with 🖤 by Team R^4")
 
 def cognitive(Cognitive):
     st.header("Cognitive")
@@ -85,150 +83,146 @@ def evaluate_answers(answers):
 
     return cognitive_score, learning_ability_score, learning_style_score, learning_intensity_score
 
-def main():
-    if st.session_state["Login"] == "":
-        st.error("Please Login to Continue")
-    else:
-        name = st.session_state['Name']
-        st.title('LearnGenie Student Analysis Questionnaire')
-        st.write(f"Hello *{name}* Please answer the following questions to help us Understand you Better")
+if st.session_state["Login"] == "":
+    st.error("Please Login to Continue")
+else:
+    name = st.session_state['Name']
+    st.title('LearnGenie Student Analysis Questionnaire')
+    st.write(f"Hello *{name}* Please answer the following questions to help us Understand you Better")
 
-        questions = [
-            "When do you feel most alert and ready to study?",
-            "How long can you stay focused during a study session before needing a break?",
-            "How often do you find yourself getting distracted while studying?",
-            "What do you do when you notice your mind wandering during a study session?",
-            "How well do you remember information after studying it for the first time?",
-            "How often do you need to revise material to remember it?",
-            "Do you find it easier to focus when studying alone or in a group?",
-            "How do you typically handle new information when studying?",
-            "How frequently do you take breaks during a typical study session?",
-            "How do you feel after taking a short break (5-10 minutes) while studying?",
-            "When learning something new, do you prefer to understand the big picture first or the details?",
-            "How do you handle complex subjects that require deeper understanding?",
-            "When studying, how often do you quiz yourself on the material?",
-            "Which method helps you learn most effectively?",
-            "When faced with a complex problem, how do you prefer to tackle it?",
-            "How do you best remember information?",
-            "What type of environment do you prefer for studying?",
-            "How do you organize your study materials?",
-            "When preparing for an exam, which technique do you find most helpful?",
-            "Do you prefer structured schedules or flexible study times?",
-            "How would you describe your current study schedule?",
-            "How do you manage your study sessions when you have a lot to cover?",
-            "If an unexpected event interrupts your study schedule, how do you react?",
-            "How often do you review your study schedule and adjust it?",
-            "Do you incorporate different types of activities in your study schedule?",
-            "How do you balance study sessions with leisure activities?",
-            "How do you feel after a long study session?",
-            "How often do you use tools like the Pomodoro technique in your study sessions?",
-            "What is your approach to handling difficult subjects or topics?",
-            "How do you track your study progress?"
-        ]
+    questions = [
+        "When do you feel most alert and ready to study?",
+        "How long can you stay focused during a study session before needing a break?",
+        "How often do you find yourself getting distracted while studying?",
+        "What do you do when you notice your mind wandering during a study session?",
+        "How well do you remember information after studying it for the first time?",
+        "How often do you need to revise material to remember it?",
+        "Do you find it easier to focus when studying alone or in a group?",
+        "How do you typically handle new information when studying?",
+        "How frequently do you take breaks during a typical study session?",
+        "How do you feel after taking a short break (5-10 minutes) while studying?",
+        "When learning something new, do you prefer to understand the big picture first or the details?",
+        "How do you handle complex subjects that require deeper understanding?",
+        "When studying, how often do you quiz yourself on the material?",
+        "Which method helps you learn most effectively?",
+        "When faced with a complex problem, how do you prefer to tackle it?",
+        "How do you best remember information?",
+        "What type of environment do you prefer for studying?",
+        "How do you organize your study materials?",
+        "When preparing for an exam, which technique do you find most helpful?",
+        "Do you prefer structured schedules or flexible study times?",
+        "How would you describe your current study schedule?",
+        "How do you manage your study sessions when you have a lot to cover?",
+        "If an unexpected event interrupts your study schedule, how do you react?",
+        "How often do you review your study schedule and adjust it?",
+        "Do you incorporate different types of activities in your study schedule?",
+        "How do you balance study sessions with leisure activities?",
+        "How do you feel after a long study session?",
+        "How often do you use tools like the Pomodoro technique in your study sessions?",
+        "What is your approach to handling difficult subjects or topics?",
+        "How do you track your study progress?"
+    ]
 
-        options = [
-            ['Early morning', 'Late morning', 'Afternoon', 'Evening'],
-            ['Less than 15 minutes', '15-30 minutes', '30-45 minutes', 'More than 45 minutes'],
-            ['Very often', 'Often', 'Sometimes', 'Rarely'],
-            ['Continue trying to study', 'Take a short break', 'Switch to a different activity', 'Review what you\'ve just studied'],
-            ['Very poorly', 'Poorly', 'Moderately well', 'Very well'],
-            ['Frequently', 'Occasionally', 'Rarely', 'Almost never'],
-            ['Alone', 'In a small group', 'In a large group', 'It varies depending on the subject'],
-            ['I need to revise it multiple times before it sticks.', 'I can remember it after a couple of revisions.', 'I usually understand and remember it after the first read.', 'I almost always understand and remember it instantly.'],
-            ['Every 10-15 minutes', 'Every 20-30 minutes', 'Every 40-60 minutes', 'I rarely take breaks.'],
-            ['Still tired', 'Slightly refreshed', 'Quite refreshed', 'Fully recharged'],
-            ['Big picture', 'Details', 'Both equally', 'Depends on the topic'],
-            ['Break them down into smaller parts', 'Discuss with peers or teachers', 'Use additional resources like videos or tutorials', 'Rely on examples and applications'],
-            ['Never', 'Rarely', 'Sometimes', 'Often'],
-            ['Visual aids (charts, diagrams)', 'Listening to lectures or discussions', 'Hands-on activities or practical exercises', 'Reading and writing'],
-            ['Drawing diagrams or mind maps', 'Discussing it with someone', 'Working through it step-by-step physically', 'Reading about similar problems and solutions'],
-            ['By visualizing it', 'By hearing it explained', 'By doing something with it', 'By writing it down'],
-            ['Quiet room', 'Background music or white noise', 'Library or study hall', 'Outdoors or variable locations'],
-            ['Color-coded notes and diagrams', 'Audio recordings and discussions', 'Physical models or demonstrations', 'Written summaries and outlines'],
-            ['Creating visual aids like charts and mind maps', 'Joining study groups or listening to lectures', 'Doing practice problems and hands-on activities', 'Reading and summarizing textbooks and notes'],
-            ['Structured schedules', 'Flexible study times', 'A mix of both', 'Depends on my mood'],
-            ['Very intense, with minimal breaks', 'Moderately intense, with regular breaks', 'Balanced, with ample time for breaks and revision', 'Relaxed, with frequent breaks and little pressure'],
-            ['Study for long hours with few breaks', 'Study in shorter, focused sessions with regular breaks', 'Mix of long and short sessions depending on the material', 'Study at a relaxed pace, regardless of the amount'],
-            ['I find it difficult to get back on track.', 'I adjust my timetable and continue.', 'I reschedule my study sessions for later.', 'I take it in stride and easily make up for lost time.'],
-            ['Daily', 'Weekly', 'Monthly', 'Rarely'],
-            ['Always', 'Often', 'Sometimes', 'Never'],
-            ['I prioritize study over leisure', 'I have a strict balance between the two', 'I mostly study but allow for some leisure time', 'I prioritize leisure over study'],
-            ['Exhausted', 'Tired but accomplished', 'Neutral', 'Energized and ready for more'],
-            ['Always1', 'Often1', 'Sometimes1', 'Never1'],
-            ['Spend extra time studying them', 'Seek help from teachers or tutors', 'Use a variety of resources (videos, books, etc.)', 'Focus on other subjects and come back later'],
-            ['Detailed logs or journals', 'Regular self-assessments and quizzes', 'Feedback from teachers and peers', 'I don\'t track my progress specifically']
-        ]
+    options = [
+        ['Early morning', 'Late morning', 'Afternoon', 'Evening'],
+        ['Less than 15 minutes', '15-30 minutes', '30-45 minutes', 'More than 45 minutes'],
+        ['Very often', 'Often', 'Sometimes', 'Rarely'],
+        ['Continue trying to study', 'Take a short break', 'Switch to a different activity', 'Review what you\'ve just studied'],
+        ['Very poorly', 'Poorly', 'Moderately well', 'Very well'],
+        ['Frequently', 'Occasionally', 'Rarely', 'Almost never'],
+        ['Alone', 'In a small group', 'In a large group', 'It varies depending on the subject'],
+        ['I need to revise it multiple times before it sticks.', 'I can remember it after a couple of revisions.', 'I usually understand and remember it after the first read.', 'I almost always understand and remember it instantly.'],
+        ['Every 10-15 minutes', 'Every 20-30 minutes', 'Every 40-60 minutes', 'I rarely take breaks.'],
+        ['Still tired', 'Slightly refreshed', 'Quite refreshed', 'Fully recharged'],
+        ['Big picture', 'Details', 'Both equally', 'Depends on the topic'],
+        ['Break them down into smaller parts', 'Discuss with peers or teachers', 'Use additional resources like videos or tutorials', 'Rely on examples and applications'],
+        ['Never', 'Rarely', 'Sometimes', 'Often'],
+        ['Visual aids (charts, diagrams)', 'Listening to lectures or discussions', 'Hands-on activities or practical exercises', 'Reading and writing'],
+        ['Drawing diagrams or mind maps', 'Discussing it with someone', 'Working through it step-by-step physically', 'Reading about similar problems and solutions'],
+        ['By visualizing it', 'By hearing it explained', 'By doing something with it', 'By writing it down'],
+        ['Quiet room', 'Background music or white noise', 'Library or study hall', 'Outdoors or variable locations'],
+        ['Color-coded notes and diagrams', 'Audio recordings and discussions', 'Physical models or demonstrations', 'Written summaries and outlines'],
+        ['Creating visual aids like charts and mind maps', 'Joining study groups or listening to lectures', 'Doing practice problems and hands-on activities', 'Reading and summarizing textbooks and notes'],
+        ['Structured schedules', 'Flexible study times', 'A mix of both', 'Depends on my mood'],
+        ['Very intense, with minimal breaks', 'Moderately intense, with regular breaks', 'Balanced, with ample time for breaks and revision', 'Relaxed, with frequent breaks and little pressure'],
+        ['Study for long hours with few breaks', 'Study in shorter, focused sessions with regular breaks', 'Mix of long and short sessions depending on the material', 'Study at a relaxed pace, regardless of the amount'],
+        ['I find it difficult to get back on track.', 'I adjust my timetable and continue.', 'I reschedule my study sessions for later.', 'I take it in stride and easily make up for lost time.'],
+        ['Daily', 'Weekly', 'Monthly', 'Rarely'],
+        ['Always', 'Often', 'Sometimes', 'Never'],
+        ['I prioritize study over leisure', 'I have a strict balance between the two', 'I mostly study but allow for some leisure time', 'I prioritize leisure over study'],
+        ['Exhausted', 'Tired but accomplished', 'Neutral', 'Energized and ready for more'],
+        ['Always1', 'Often1', 'Sometimes1', 'Never1'],
+        ['Spend extra time studying them', 'Seek help from teachers or tutors', 'Use a variety of resources (videos, books, etc.)', 'Focus on other subjects and come back later'],
+        ['Detailed logs or journals', 'Regular self-assessments and quizzes', 'Feedback from teachers and peers', 'I don\'t track my progress specifically']
+    ]
 
-        answer = []
-        answers = []
-        for i, question in enumerate(questions):
-            st.write(f"{i+1}. {question}")
-            option = st.radio("", options[i])
-            answer.append(option)
+    answer = []
+    answers = []
+    for i, question in enumerate(questions):
+        st.write(f"{i+1}. {question}")
+        option = st.radio("", options[i])
+        answer.append(option)
 
-        for i in range(30):
-            if answer[i] in options[i]:
-                if answer[i] == options[i][0]:
-                    answers.append('a')
-                elif answer[i] == options[i][1]:
-                    answers.append('b')
-                elif answer[i] == options[i][2]:
-                    answers.append('c')
-                elif answer[i] == options[i][3]:
-                    answers.append('d')
-                
-
-        if st.button('Submit'):
-            cognitive_score, learning_ability_score, learning_style_score, learning_intensity_score = evaluate_answers(answers)
-            if cognitive_score >= 6:
-                st.session_state["Cognitive"] = "High"
-            elif cognitive_score >= 4:
-                st.session_state["Cognitive"] = "Moderate"
-            else:
-                st.session_state["Cognitive"] = "Low"
-
-            if learning_ability_score >= 5:
-                st.session_state["Ability"] = "High"
-            elif learning_ability_score >= 3:
-                st.session_state["Ability"] = "Moderate"
-            else:
-                st.session_state["Ability"] = "Low"
-
-            learning_style_answers = answers[13:20]
-            if learning_style_score == learning_style_answers.count('a'):
-                st.session_state["Style"] = "Visual"
-            elif learning_style_score == learning_style_answers.count('b'):
-                st.session_state["Style"] = "Audio"
-            elif learning_style_score == learning_style_answers.count('c'):
-                st.session_state["Style"] = "Kinesthetic"
-            else:
-                st.session_state["Style"] = "LSRW"
-
-            learning_intensity_answers = answers[20:]
-            if learning_intensity_score == learning_intensity_answers.count('a'):
-                st.session_state["Intensity"] = "High"
-            elif learning_intensity_score == learning_intensity_answers.count('b') or learning_intensity_score == learning_intensity_answers.count('c'):
-                st.session_state["Intensity"] = "Balanced"
-            else:
-                st.session_state["Intensity"] = "Low"
-
+    for i in range(30):
+        if answer[i] in options[i]:
+            if answer[i] == options[i][0]:
+                answers.append('a')
+            elif answer[i] == options[i][1]:
+                answers.append('b')
+            elif answer[i] == options[i][2]:
+                answers.append('c')
+            elif answer[i] == options[i][3]:
+                answers.append('d')
             
-            Cognitive = st.session_state["Cognitive"]
-            Ability = st.session_state["Ability"]
-            Style = st.session_state["Style"]
-            Intensity = st.session_state["Intensity"]
-            Name = st.session_state["Name"]
 
-            st.write(f"Hello *{Name}*")
-            st.write(f"""According to your responses, you have a *{Cognitive}* cognitive ability, \na *{Style}* learning style, a *{Intensity}* learning intensity, and a *{Ability}* learning ability.""")
+    if st.button('Submit'):
+        cognitive_score, learning_ability_score, learning_style_score, learning_intensity_score = evaluate_answers(answers)
+        if cognitive_score >= 6:
+            st.session_state["Cognitive"] = "High"
+        elif cognitive_score >= 4:
+            st.session_state["Cognitive"] = "Moderate"
+        else:
+            st.session_state["Cognitive"] = "Low"
 
-            st.write("**The Resources that we Recommend using to you are as follows**")
-            cognitive(Cognitive)
-            ability(Ability)
-            style(Style)
-            intensity(Intensity)
+        if learning_ability_score >= 5:
+            st.session_state["Ability"] = "High"
+        elif learning_ability_score >= 3:
+            st.session_state["Ability"] = "Moderate"
+        else:
+            st.session_state["Ability"] = "Low"
 
+        learning_style_answers = answers[13:20]
+        if learning_style_score == learning_style_answers.count('a'):
+            st.session_state["Style"] = "Visual"
+        elif learning_style_score == learning_style_answers.count('b'):
+            st.session_state["Style"] = "Audio"
+        elif learning_style_score == learning_style_answers.count('c'):
+            st.session_state["Style"] = "Kinesthetic"
+        else:
+            st.session_state["Style"] = "LSRW"
 
-if __name__ == "__main__":
-    main()
+        learning_intensity_answers = answers[20:]
+        if learning_intensity_score == learning_intensity_answers.count('a'):
+            st.session_state["Intensity"] = "High"
+        elif learning_intensity_score == learning_intensity_answers.count('b') or learning_intensity_score == learning_intensity_answers.count('c'):
+            st.session_state["Intensity"] = "Balanced"
+        else:
+            st.session_state["Intensity"] = "Low"
+
+        
+        Cognitive = st.session_state["Cognitive"]
+        Ability = st.session_state["Ability"]
+        Style = st.session_state["Style"]
+        Intensity = st.session_state["Intensity"]
+        Name = st.session_state["Name"]
+
+        st.write(f"Hello *{Name}*")
+        st.write(f"""According to your responses, you have a *{Cognitive}* cognitive ability, \na *{Style}* learning style, a *{Intensity}* learning intensity, and a *{Ability}* learning ability.""")
+
+        st.write("**The Resources that we Recommend using to you are as follows**")
+        cognitive(Cognitive)
+        ability(Ability)
+        style(Style)
+        intensity(Intensity)
+
     

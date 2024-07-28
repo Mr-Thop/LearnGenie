@@ -50,40 +50,35 @@ def login(connection, cursor):
             st.error("User not found. Please register first.")
     return None
 
-def main():
-    # Connection parameters
-    db_host = 'sportan-sportans.g.aivencloud.com'
-    db_port = 10931
-    db_user = 'avnadmin'
-    db_password = 'AVNS_rQv-tHW54YDLIuObu2M' #Replace with your actual password
-    db_name = 'defaultdb'
+# Connection parameters
+db_host = 'sportan-sportans.g.aivencloud.com'
+db_port = 10931
+db_user = 'avnadmin'
+db_password = 'AVNS_rQv-tHW54YDLIuObu2M' #Replace with your actual password
+db_name = 'defaultdb'
 
-    try:
-        # Establish a connection
-        connection = sql.connect(
-            host=db_host,
-            port=db_port,
-            user=db_user,
-            passwd=db_password,
-            db=db_name
-        )
-        cursor = connection.cursor()
-    except sql.Error as e:
-        print(f"Error: {e}")
+try:
+    # Establish a connection
+    connection = sql.connect(
+        host=db_host,
+        port=db_port,
+        user=db_user,
+        passwd=db_password,
+        db=db_name
+    )
+    cursor = connection.cursor()
+except sql.Error as e:
+    print(f"Error: {e}")
 
-    with st.sidebar:
-        selected_option=st.radio("Select an Option",["Register","Login"])
+with st.sidebar:
+    selected_option=st.radio("Select an Option",["Register","Login"])
+
+if selected_option=="Register":
+    register(connection,cursor)
+else:
+    user=login(connection,cursor)
+    if user:
+        st.session_state["Login"]=user[4]
+        st.session_state["Id"]=user[0]
+        st.session_state["Name"]=user[1]
     
-    if selected_option=="Register":
-        register(connection,cursor)
-    else:
-        user=login(connection,cursor)
-        if user:
-            st.session_state["Login"]=user[4]
-            st.session_state["Id"]=user[0]
-            st.session_state["Name"]=user[1]
-        
-    
-
-if __name__ == "__main__":
-    main()

@@ -15,9 +15,6 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
 
-st.set_page_config(layout='wide',page_title="PDF Analyser")
-st.sidebar.write("Created with 🖤 by Team R^4")
-
 def get_pdf_text(pdf_files):
     pdf_reader = PdfReader(pdf_files)
     text = ""
@@ -96,45 +93,41 @@ def run_user_input(user_question):
     st.write("User input function executed in the thread.")
     return output
 
-def main():
-    if st.session_state["Login"] == "":
-        st.error("Please Login to Continue")
-    else:
-        st.header("Chat with PDF")    
 
-        st.title("PDF Text Extractor")
-        
-        
-        with st.sidebar:
-        # File uploader widget
-            pdf_files = st.file_uploader("Upload PDF files", type=["pdf"], accept_multiple_files=True)
-        
-        # Check if a file has been uploaded
-            context = ""
-            if pdf_files :
-            
-            # Extract text from the PDF
-                for pdf in pdf_files:
-                    text = get_pdf_text(pdf)
-                    context += text
-            
-            # Display the extracted text
-                    if context:
-                        st.success("Text Extracted Successfully")
-                    else:
-                        st.error("Text Cannot Be Extracted")
-        
-
-        user_question = st.text_input("Ask a Question from PDF")
-
-        if user_question:
-            user_input(user_question,pdf_files)
-            
-
-
-if __name__ == "__main__":
+if st.session_state["Login"] == "":
+    st.error("Please Login to Continue")
+else:
     load_dotenv()
-
     genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+    st.header("Chat with PDF")    
 
-    main()
+    st.title("PDF Text Extractor")
+    
+    
+    with st.sidebar:
+    # File uploader widget
+        pdf_files = st.file_uploader("Upload PDF files", type=["pdf"], accept_multiple_files=True)
+    
+    # Check if a file has been uploaded
+        context = ""
+        if pdf_files :
+        
+        # Extract text from the PDF
+            for pdf in pdf_files:
+                text = get_pdf_text(pdf)
+                context += text
+        
+        # Display the extracted text
+                if context:
+                    st.success("Text Extracted Successfully")
+                else:
+                    st.error("Text Cannot Be Extracted")
+    
+
+    user_question = st.text_input("Ask a Question from PDF")
+
+    if user_question:
+        user_input(user_question,pdf_files)
+        
+
+
