@@ -65,11 +65,13 @@ def login():
         cursor = connection.cursor()
     except sql.Error as e:
         print(f"Error: {e}")
+
     st.subheader("Login")
     email = st.text_input("Email")
     password = st.text_input("Password", type="password")
 
     if st.button("Login"):
+        
         cursor.execute("SELECT * FROM LGusers WHERE email = %s", (email,))
         user = cursor.fetchone()
 
