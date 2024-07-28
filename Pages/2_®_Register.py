@@ -11,18 +11,16 @@ def register():
     db_password = 'AVNS_rQv-tHW54YDLIuObu2M' #Replace with your actual password
     db_name = 'defaultdb'
 
-    try:
+    
         # Establish a connection
-        connection = sql.connect(
+    connection = sql.connect(
             host=db_host,
             port=db_port,
             user=db_user,
             passwd=db_password,
             db=db_name
         )
-        cursor = connection.cursor()
-    except sql.Error as e:
-        print(f"Error: {e}")
+    cursor = connection.cursor()
     st.subheader("Register")
     name = st.text_input("Name")
     email = st.text_input("Email")
@@ -53,25 +51,22 @@ def login():
     db_password = 'AVNS_rQv-tHW54YDLIuObu2M' #Replace with your actual password
     db_name = 'defaultdb'
 
-    try:
         # Establish a connection
-        connection = sql.connect(
+    connection = sql.connect(
             host=db_host,
             port=db_port,
             user=db_user,
             passwd=db_password,
             db=db_name
         )
-        cursor = connection.cursor()
-    except sql.Error as e:
-        print(f"Error: {e}")
+    cursor = connection.cursor()
 
     st.subheader("Login")
     email = st.text_input("Email")
     password = st.text_input("Password", type="password")
 
     if st.button("Login"):
-        
+
         cursor.execute("SELECT * FROM LGusers WHERE email = %s", (email,))
         user = cursor.fetchone()
 
