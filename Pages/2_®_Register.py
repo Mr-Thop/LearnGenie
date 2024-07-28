@@ -70,7 +70,6 @@ def login():
     password = st.text_input("Password", type="password")
 
     if st.button("Login"):
-        cursor = connection.cursor()
         cursor.execute("SELECT * FROM LGusers WHERE email = %s", (email,))
         user = cursor.fetchone()
 
