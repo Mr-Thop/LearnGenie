@@ -37,7 +37,7 @@ bot_page = st.Page(
 
 # --- Navigation ---
 
-pg = st.navigation(pages=[home_page,about_page,login_page,test_page,analyse_page,bot_page])
+pg = st.navigation(pages=[home_page,login_page,test_page,analyse_page,bot_page,about_page])
 
 pg.run()
 
