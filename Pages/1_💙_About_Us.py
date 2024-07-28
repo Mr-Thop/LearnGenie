@@ -24,26 +24,26 @@ _,col1,_,col2,_,col3,_,col4 = st.columns([0.3,1,0.6,1,0.3,1,0.6,1])
 with col1:
     st.text("")
     st.text("")
-    st.image('reeti.jfif',width=150)
+    st.image('images/reeti.jfif',width=150)
     st.text("Reeti Agarwal\nComputer Engineer")
 
 
 with col3:
     st.text("")
     st.text("")
-    st.image('karthik.jpg',width=150)
+    st.image('images/karthik.jpg',width=150)
     st.text("Karthik Reddy\nAIML Engineer")
 
 with col2:
     st.text("")
     st.text("")
-    st.image('ria2.jfif',width=150)
+    st.image('images/ria.jfif',width=150)
     st.text("Ria Vinod\nComputer Engineer")
 
 with col4:
     st.text("")
     st.text("")
-    st.image('ratan2.jfif',width=150)
+    st.image('images/ratan2.jfif',width=150)
     st.text("Ratan Maurya\nAIML Engineer")
 
 st.write("---")

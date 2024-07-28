@@ -1,6 +1,6 @@
 import streamlit as st
 from passlib.hash import sha256_crypt
-import mysql.connector as sql
+import MySQLdb
 
 # Function for user registration
 def register(connection, cursor):
@@ -13,14 +13,14 @@ def register(connection, cursor):
 
     if st.button("Register"):
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
+        cursor.execute("SELECT * FROM LGusers WHERE email = %s", (email,))
         user = cursor.fetchone()
 
         if user:
             st.error("User already exists. Please log in.")
         else:
             hashed_password = sha256_crypt.hash(password)
-            cursor.execute("INSERT INTO users (name, email, password, role) VALUES (%s, %s, %s, %s)", (name, email, hashed_password, role))
+            cursor.execute("INSERT INTO LGusers (name, email, password, role) VALUES (%s, %s, %s, %s)", (name, email, hashed_password, role))
             connection.commit()
             cursor.close()
             st.success("Registration successful. You can now log in.")
@@ -33,7 +33,7 @@ def login(connection, cursor):
 
     if st.button("Login"):
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
+        cursor.execute("SELECT * FROM LGusers WHERE email = %s", (email,))
         user = cursor.fetchone()
 
         if user:
@@ -51,19 +51,25 @@ def login(connection, cursor):
     return None
 
 def main():
-    st.sidebar.write("Created with  ❤  by Team R^4")
+    # Connection parameters
+    db_host = 'sportan-sportans.g.aivencloud.com'
+    db_port = 10931
+    db_user = 'avnadmin'
+    db_password = 'AVNS_rQv-tHW54YDLIuObu2M' #Replace with your actual password
+    db_name = 'defaultdb'
 
-    db_config = {
-    "host": "localhost",
-    "user": "root",
-    "password": "Reddy0314@",
-    "database": "Genie",
-    }
-
-    
-    connection = sql.connect(host='localhost',user='root',password='Reddy0314@',database='Genie')
-
-    cursor = connection.cursor()
+    try:
+        # Establish a connection
+        connection = MySQLdb.connect(
+            host=db_host,
+            port=db_port,
+            user=db_user,
+            passwd=db_password,
+            db=db_name
+        )
+        cursor = connection.cursor()
+    except MySQLdb.Error as e:
+        print(f"Error: {e}")
 
     with st.sidebar:
         selected_option=st.radio("Select an Option",["Register","Login"])

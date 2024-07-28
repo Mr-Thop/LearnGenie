@@ -13,7 +13,7 @@ if "Login" not in st.session_state:
 col1,col4,col2,col3=st.columns([1,0.3,5,2])
 with col1:
      st.text("")
-     st.image("3.jpg")
+     st.image("images/logo.jpg")
 
 with col2:
      st.write(" ")
@@ -56,7 +56,7 @@ with col2:
      st.text("")
      st.text("")
      st.text("")
-     st.image("1.jpg",width=400)
+     st.image("images/choose.jpg",width=400)
 
 
 _,col3,col1=st.columns([0.2,1,1])
@@ -80,4 +80,4 @@ with col3:
      st.text("")
      st.text("")
      st.text("")
-     st.image("2.jpg",width=400)
+     st.image("images/features.jpg",width=400)
