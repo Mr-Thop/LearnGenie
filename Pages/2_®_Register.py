@@ -1,6 +1,6 @@
 import streamlit as st
 from passlib.hash import sha256_crypt
-import MySQLdb
+import mysql.connector as sql
 
 # Function for user registration
 def register(connection, cursor):
@@ -60,7 +60,7 @@ def main():
 
     try:
         # Establish a connection
-        connection = MySQLdb.connect(
+        connection = sql.connect(
             host=db_host,
             port=db_port,
             user=db_user,
@@ -68,7 +68,7 @@ def main():
             db=db_name
         )
         cursor = connection.cursor()
-    except MySQLdb.Error as e:
+    except sql.Error as e:
         print(f"Error: {e}")
 
     with st.sidebar:

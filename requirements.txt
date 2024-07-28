@@ -6,6 +6,6 @@ PyPDF2
 faiss-cpu
 langchain_google_genai
 passlib==1.7.4
-mysql.connector
-mysqlclient
+mysql-connector==2.2.9
+mysql-connector-python==8.4.0
 requests
