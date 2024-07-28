@@ -11,27 +11,27 @@ home_page = st.Page(
     default= True
 )
 about_page = st.Page(
-     page = "Pages/1_💙_About_Us.py",
+     page = "./Pages/1_💙_About_Us.py",
      title = "About Us" 
      )
 
 login_page = st.Page(
-     page = "Pages/2_®_Register.py",
+     page = "./Pages/2_®_Register.py",
      title = "Register"
      )
 
 test_page = st.Page(
-     page= "Pages/3_📜_Analysis_Test.py",
+     page= "./Pages/3_📜_Analysis_Test.py",
      title ="Analysis Test"
      )
 
 analyse_page = st.Page(
-     page= "Pages/4_🧞_Genie_Analyser.py",
+     page= "./Pages/4_🧞_Genie_Analyser.py",
      title="Genie Analyser"
 )
 
 bot_page = st.Page(
-     page="Pages/5_🤖_Genie_Bot.py",
+     page="./Pages/5_🤖_Genie_Bot.py",
      title="Genie Bot"
 )
 
